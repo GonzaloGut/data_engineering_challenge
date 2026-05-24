@@ -3,7 +3,9 @@ from app.database.database import Base, engine
 from app.models.department import Department
 from app.models.job import Job
 from app.models.hired_employee import HiredEmployee
-from app.api.upload_routes import router as upload_router
+from app.api.department_routes import router as department_router
+from app.api.job_routes import router as job_router
+from app.api.hired_employee_routes import router as employee_router
 
 app = FastAPI(
     title="Data Engineering Challenge API",
@@ -12,7 +14,9 @@ app = FastAPI(
 
 Base.metadata.create_all(bind=engine)
 
-app.include_router(upload_router)
+app.include_router(department_router)
+app.include_router(job_router)
+app.include_router(employee_router)
 
 @app.get("/")
 def healtcheck():
