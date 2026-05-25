@@ -67,7 +67,7 @@ cd data_engineering_challenge
 
 
 ### 2. Configure Environment Variables
-Create a .env file in the project root:
+Create a `.env` file in the project root:
 
 ```env
 POSTGRES_USER=admin
@@ -99,10 +99,10 @@ http://localhost:8000/docs
 
 ### Analytics Endpoints
 
-- GET `/analytics/employees_by_quarter`
+- GET `/analytics/employees_by_quarter`:
 Returns the number of employees hired for each job and department in 2021 divided by quarter.
 
-- GET `/analytics/departments_above_mean`
+- GET `/analytics/departments_above_mean`:
 Returns departments that hired more employees than the average number of hires in 2021.
 
 ## Data Validation & Cleaning
