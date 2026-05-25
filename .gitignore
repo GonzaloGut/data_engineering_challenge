@@ -2,3 +2,8 @@
 __pycache__/
 .env
 .pytest_cache/
+storage/
+    bronze/
+        .gitkeep
+    errors/
+        .gitkeep
