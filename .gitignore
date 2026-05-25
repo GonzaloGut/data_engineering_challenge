@@ -1,5 +1,11 @@
 .venv/
 __pycache__/
+*.pyc
 .env
 .pytest_cache/
-storage/
+
+storage/*
+!storage/bronze/
+!storage/errors/
+!storage/bronze/.gitkeep
+!storage/errors/.gitkeep
