@@ -10,6 +10,12 @@ The solution follows a simplified Medallion Architecture approach:
 - Silver Layer → Cleaned and validated PostgreSQL tables
 - Gold Layer → Analytical SQL endpoints
 
+## Live API
+
+Swagger Documentation:
+
+https://data-engineering-api-235042863861.us-central1.run.app/docs
+
 ## Architecture
 
 - FastAPI REST API
