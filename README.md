@@ -10,6 +10,12 @@ The solution follows a simplified Medallion Architecture approach:
 - Silver Layer → Cleaned and validated PostgreSQL tables
 - Gold Layer → Analytical SQL endpoints
 
+## 📝 Learn More
+
+A complete technical walkthrough is available on Medium:
+
+🔗 **[Read the article](https://medium.com/@gonzaloglr23/building-an-end-to-end-data-engineering-api-with-fastapi-postgresql-docker-and-google-cloud-84137b3fb8ad)**
+
 ## Live API
 
 Swagger Documentation:
