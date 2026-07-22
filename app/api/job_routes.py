@@ -1,9 +1,10 @@
 import io
 import pandas as pd
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, UploadFile
 from sqlalchemy.orm import Session
 from app.database.dependencies import get_db
 from app.models.job import Job
+from app.utils.file_validation import validate_csv_file
 
 router = APIRouter()
 
@@ -13,11 +14,8 @@ async def upload_jobs(
     db : Session = Depends(get_db)
 ):
     
-    if not file.filename.endswith(".csv"):
-        raise HTTPException(
-            status_code=400,
-            detail="File must be a CSV"
-        )
+    # Validate uploaded file
+    await validate_csv_file(file)
     
     contents = await file.read()
 

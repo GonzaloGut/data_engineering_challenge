@@ -1,11 +1,12 @@
 import io
-from datetime import datetime
+from datetime import datetime, UTC
 import pandas as pd
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from app.database.dependencies import get_db
 from app.models.hired_employee import HiredEmployee
+from app.utils.file_validation import validate_csv_file
 
 router = APIRouter()
 
@@ -15,15 +16,11 @@ async def upload_employees(
     db: Session = Depends(get_db)
 ):
     
-    # Validate file type
-    if not file.filename.endswith(".csv"):
-        raise HTTPException(
-            status_code=400,
-            detail="File must be a CSV"
-        )
+    # Validate uploaded file
+    await validate_csv_file(file)
     
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-
+    timestamp = datetime.now(UTC).strftime("%Y%m%d%H%M%S")
+    
     # Bronze Layer: Save raw CSV
     bronze_path = (
         f"storage/bronze/employees_{timestamp}.csv"
@@ -31,8 +28,8 @@ async def upload_employees(
 
     contents = await file.read()
 
-    with open(bronze_path, "wb") as f:
-        f.write(contents)
+    with open(bronze_path, "wb") as bronze_file:
+        bronze_file.write(contents)
 
     # Read CSV
     df = pd.read_csv(

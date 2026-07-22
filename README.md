@@ -44,6 +44,7 @@ data_engineering_challenge/
 │   ├── api/
 │   ├── database/
 │   ├── models/
+│   ├── utils/
 │   └── main.py
 │
 ├── storage/
